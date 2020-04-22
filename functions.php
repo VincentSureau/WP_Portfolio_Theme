@@ -318,12 +318,12 @@ require_once(get_template_directory() . '/inc/custom_query.php');
 // mailer
 add_action( 'phpmailer_init', 'mailer_config', 10, 1);
 function mailer_config(PHPMailer $mailer){
-  $mailer->IsSMTP();
-  $mailer->Host = SMTP_HOST; // your SMTP server
-  $mailer->Port = SMTP_PORT;
-  $mail->Username = SMTP_USERNAME;
-  $mail->Password = SMTP_PASSWORD;
-  $mail->SMTPSecure = SMTP_SECURE;
-  $mailer->SMTPDebug = 0; // write 0 if you don't want to see client/server communication in page
-  $mailer->CharSet  = "utf-8";
+    $mailer->IsSMTP();
+    $mailer->Host = SMTP_HOST; // your SMTP server
+    $mailer->Port = SMTP_PORT;
+    $mailer->Username = SMTP_USERNAME;
+    $mailer->Password = SMTP_PASSWORD;
+    $mailer->SMTPSecure = SMTP_SECURE;
+    $mailer->SMTPDebug = 0; // write 0 if you don't want to see client/server communication in page
+    $mailer->CharSet  = "utf-8";
 }
