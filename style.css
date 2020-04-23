@@ -31,7 +31,6 @@ Tags: portofolio, bootstrap
 # Media
 	## Captions
 	## Galleries
-# Woocommerce
 # Footer
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
@@ -216,6 +215,8 @@ th {
 --------------------------------------------------------------*/
 body {
   font-size: 1.2rem!important;
+  display: flex;
+  flex-direction: column;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -521,6 +522,11 @@ body:not(.theme-preset-active) #masthead .navbar-nav > li.current_page_item > a 
     outline: none;
   }
 }
+
+.site {
+  flex: 1 0 auto;
+}
+
 .site-main .comment-navigation,
 .site-main .posts-navigation,
 .site-main .post-navigation {
