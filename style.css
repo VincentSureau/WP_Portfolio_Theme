@@ -1084,6 +1084,7 @@ body:not(.theme-preset-active) footer#colophon {
   }
 }
 
-.bg-duck-blue {
+.bg-duck-blue,
+.site-footer .bg-duck-blue {
   background-color: #2580ab!important;
 }
