@@ -17,65 +17,37 @@ get_header(); ?>
 	<section id="primary" class="content-area <?= is_active_sidebar('sidebar-1') ? "col-lg-8": ""?>">
 		<main id="main" class="site-main" role="main">
 			<?php while ( have_posts() ) : the_post(); ?>
-				<section id="about" class="container">
-					<h2 class="text-center">Présentation</h2>
-					<h3 class="text-center">Développeur Web | PHP - Symfony - Wordpress</h3>
-					<div class="row my-5">
-						<div class="col-12 col-lg-6">
-							<figure class="figure">
-								<img src="<?= get_site_url() ?>/wp-content/themes/vincent-sureau-portfolio/images/promo-figure-alt.svg" class="figure-img img-fluid" alt="">
-							</figure>
-						</div>
-						<div class="col-12 col-lg-6 d-flex flex-column justify-content-around align-items-center">
-							<p>
-								Je suis Vincent Sureau. Je suis développeur spécialisé dans la création de site web et d’applications mobiles.
-							</p>
-							<p>
-								Je vous accompagne dans la mise en place de la stratégie numérique de votre entreprise.
-							</p>
-							<p>
-								Basé au cœur du Var en région PACA, je me déplace sur la France entière pour concrétiser vos projets.
-							</p>
-							<p class="text-center">
-								<a class="btn btn-primary btn-lg">
-									Contact
-								</a>
-							</p>
-						</div>
-					</div>
 
-					<div class="col-lg-8 mx-auto my-3">
-							<ul class="list-star">
-								<p class="text-center">
-									J’ai déjà réalisé de nombreuses créations :
-								</p>
-								<li>
-									Plateforme de mise en relation entre client et prestataires de service
-								</li>
-								<li>
-									Outils de gestion de élèves
-								</li>
-								<li>
-									Création de sites vitrines avec espace de gestion des membres
-								</li>
-								<li>
-									Création de landing pages
-								</li>
-								<li>
-									Plateforme de publication de vidéos
-								</li>
-								<li>
-									Site de média d’actualité
-								</li>
-								<li>
-									Création de site communautaire
-								</li>
-								<li>
-									Missions de renfort au seins d’équipes de développeurs
-								</li>
-							</ul>
-					</div>
-				</section>
+			<?php if(get_field('section_presentation_is_active') == true): ?>
+					<section id="about" class="container">
+						<h2 class="text-center"><?= the_field( 'section_presentation_title' ) ?></h2>
+						<div class="row my-5 justify-content-center">
+							<?php if(has_post_thumbnail()): ?>
+								<div class="col-12 col-lg-6">
+									<figure class="figure">
+										<?php the_post_thumbnail('post-thumbnail', ["class" => "figure-img img-fluid"]) ?>
+									</figure>
+								</div>
+							<?php endif;?>
+							<div class="col-12 <?= has_post_thumbnail()? "col-lg-6" : "col-lg-8" ?> d-flex flex-column justify-content-around align-items-center">
+								<?= the_field('section_presentation_text_1') ?>
+								<?php if( get_field( 'section_presentation_call_to_action_link' ) ): ?>
+									<p class="text-center">
+										<a class="btn btn-primary btn-lg" href="<?php the_field( 'section_presentation_call_to_action_link' ) ?>">
+											<?php the_field( 'section_presentation_call_to_action_title' ) ?>
+										</a>
+									</p>
+								<?php endif; ?>
+							</div>
+						</div>
+
+						<div class="col-lg-8 mx-auto my-3">
+							<?php the_field( 'section_presentation_text_2' ) ?>
+						</div>
+					</section>
+
+				<?php endif;?>
+
 				<section id="info" class="my-5 col-lg-11 col-xl-8 mx-auto my-5">
 					<div class="card-columns d-flex flex-column justify-content-center align-items-center align-items-lg-stretch flex-lg-row">
 						<div class="card col-12 col-md-10 col-lg-5">
@@ -145,77 +117,86 @@ get_header(); ?>
 					</div>
 				</section>
 
-				<section id="cv" class="my-5">
-					<div class="jumbotron">
-					<p class="lead text-center font-weight-bold">Télécharger mon CV</p>
-					<hr class="my-4">
-					<p class="lead text-center">
-						<a class="btn btn-primary btn-lg" href="#" role="button">Télécharger</a>
-					</p>
-					</div>
-				</section>
 
-
-				<?php $experiences = Vincent_Sureau_Portfolio__custom_query([
-					"post_type" => "experience",
-					"section_max_posts" => 20,
-					]) 
-				?>
-				<?php if(!empty($experiences)): ?>
-					<section id="experiences" class="container px-lg-5">
-						<h2 class="text-center">Mes expériences</h2>
-						<div class="card-columns">
-							<?php foreach($experiences as $experience): ?>
-								<?php //var_dump($experience); ?>
-								<div class="card">
-									<?= get_the_post_thumbnail($experience, 'experience_card', ["class" => "card-img-top"]) ?>
-									<div class="card-body">
-										<h3 class="card-title h4"><?= $experience->post_title ?></h3>
-										<p class="card-text"><?= get_field('description', $experience->ID) ?></p>
-										<p class="card-text">
-											<?php foreach(get_the_terms($experience, 'Techno') as $techno): ?>
-												<a href="#">#<?= $techno->name ?></a>
-											<?php endforeach; ?>
-										</p>
-										<p class="card-text">
-												<?= the_field('date', $experience->ID) ?>
-										</p>
-									</div>
-								</div>
-							<?php endforeach; ?>
-						</div>				
+				<?php if(get_field('section_resume_is_active') == true): ?>
+					<section id="cv" class="my-5">
+						<div class="jumbotron">
+						<p class="lead text-center font-weight-bold"><?= the_field( 'section_resume_title' ); ?></p>
+						<hr class="my-4">
+						<p class="lead text-center">
+							<a class="btn btn-primary btn-lg" href="<?= the_field( 'resume_file' ); ?>" target="_blank" role="button">Télécharger</a>
+						</p>
+						</div>
 					</section>
-				<?php endif; ?>
+				<?php endif;?>
 
-				<?php $competences = Vincent_Sureau_Portfolio__custom_query([
-					"post_type" => "competence",
-					"section_max_posts" => 20,
-					]) 
-				?>
-				<?php if(!empty($competences)): ?>
-					<section id="competences" class="fluid-container my-5">
-						<h2 class="text-center">Mes compétences</h2>
-						<div class="d-flex flex-row flex-wrap justify-content-center align-items-strech">
-							<?php foreach($competences as $competence): ?>
-								<?php //var_dump($competence); ?>
-								<div class="col-6 col-sm-4 col-md-3 col-xl-2 d-flex flex-column justify-content-between align-items-center">
-									<div class="flex-grow-1 d-flex justify-content-center align-items-center">
-										<?= get_the_post_thumbnail($competence, 'competence_card', ["class" => "img-fluid"]) ?>
+				<?php if(get_field('section_experience_is_active') == true): ?>
+					<?php $experiences = Vincent_Sureau_Portfolio__custom_query([
+						"post_type" => "experience",
+						"section_max_posts" => 20,
+						]) 
+					?>
+					<?php if(!empty($experiences)): ?>
+						<section id="experiences" class="container px-lg-5">
+							<h2 class="text-center"><?= the_field( 'section_experiences_title' ); ?></h2>
+							<div class="card-columns">
+								<?php foreach($experiences as $experience): ?>
+									<?php //var_dump($experience); ?>
+									<div class="card">
+										<?= get_the_post_thumbnail($experience, 'experience_card', ["class" => "card-img-top"]) ?>
+										<div class="card-body">
+											<h3 class="card-title h4"><?= $experience->post_title ?></h3>
+											<p class="card-text"><?= get_field('description', $experience->ID) ?></p>
+											<p class="card-text">
+												<?php foreach(get_the_terms($experience, 'Techno') as $techno): ?>
+													<a href="#">#<?= $techno->name ?></a>
+												<?php endforeach; ?>
+											</p>
+											<p class="card-text">
+													<?= the_field('date', $experience->ID) ?>
+											</p>
+										</div>
 									</div>
-									<h3 class="h4"><?= $competence->post_title ?></h3>
-								</div>
-							<?php endforeach; ?>
-						</div>				
+								<?php endforeach; ?>
+							</div>				
+						</section>
+					<?php endif; ?>
+				<?php endif;?>
+
+				<?php if(get_field('section_skills_is_active') == true): ?>
+					<?php $competences = Vincent_Sureau_Portfolio__custom_query([
+						"post_type" => "competence",
+						"section_max_posts" => 20,
+						]) 
+					?>
+					<?php if(!empty($competences)): ?>
+						<section id="competences" class="fluid-container my-5">
+							<h2 class="text-center"><?= the_field( 'section_skills_title' ); ?></h2>
+							<div class="d-flex flex-row flex-wrap justify-content-center align-items-strech">
+								<?php foreach($competences as $competence): ?>
+									<?php //var_dump($competence); ?>
+									<div class="col-6 col-sm-4 col-md-3 col-xl-2 d-flex flex-column justify-content-between align-items-center">
+										<div class="flex-grow-1 d-flex justify-content-center align-items-center">
+											<?= get_the_post_thumbnail($competence, 'competence_card', ["class" => "img-fluid"]) ?>
+										</div>
+										<h3 class="h4"><?= $competence->post_title ?></h3>
+									</div>
+								<?php endforeach; ?>
+							</div>				
+						</section>
+					<?php endif; ?>
+				<?php endif;?>
+
+				<?php if(get_field('section_contact_is_active') == true): ?>
+					<section id="contact" class="my-5 container">
+						<h2 class="text-center"><?= the_field( 'section_contact_title' ); ?></h2>
+						<div class="col-12 col-md-8 col-lg-6 mx-auto p-4 bg-duck-blue">
+							<?= the_field( 'section_contact_content' ); ?>
+						</div>
+
 					</section>
-				<?php endif; ?>
+				<?php endif;?>
 
-				<section id="contact" class="my-5 container">
-					<h2 class="text-center">Me contacter</h2>
-					<div class="col-12 col-md-8 col-lg-6 mx-auto p-4 bg-duck-blue">
-						<?= do_shortcode('[contact-form-7 id="155" title="Formulaire de contact Front Page"]') ?>
-					</div>
-
-				</section>
 			<?php endwhile; ?>
 
 		</main><!-- #main -->
