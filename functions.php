@@ -337,6 +337,26 @@ function Vincent_Sureau_Portfolio_remove_content_editor()
 {
     if((int) get_option('page_on_front') == get_the_ID())
     {
-        remove_post_type_support('page', 'editor');
+        add_filter('use_block_editor_for_post', '__return_false');
+        add_filter('use_block_editor_for_page', '__return_false');
+        remove_post_type_support( 'page', 'editor' );
     }
+    
 }
+
+/**
+ * Remove guttember on front page as all the content is handled by ACF
+ *
+ * @param bool $can_use | The current post_type can use guttemberb
+ * @param string $post_type | Current post_type (ex: page, post)
+ * @return void
+ */
+function Vincent_Sureau_Portfolio__disable_gutenberg( $can_use, $post_type ) {
+    if ( get_option('page_on_front') == get_the_ID()) {
+        return false;
+    }
+
+    return true;
+}
+
+add_filter( 'use_block_editor_for_post_type', 'Vincent_Sureau_Portfolio__disable_gutenberg', 10, 2 );
