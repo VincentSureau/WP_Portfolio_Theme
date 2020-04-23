@@ -101,7 +101,7 @@ function Vincent_Sureau_Portfolio_bg_class() {
             return 'navbar-light bg-light';
             break;
         case "superhero":
-            return 'navbar-dark bg-duck-blue';
+            return 'navbar-dark bg-dark';
             break;
         case "united":
             return 'navbar-dark bg-primary';
