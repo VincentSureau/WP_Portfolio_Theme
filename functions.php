@@ -327,3 +327,16 @@ function mailer_config(PHPMailer $mailer){
     $mailer->SMTPDebug = 0; // write 0 if you don't want to see client/server communication in page
     $mailer->CharSet  = "utf-8";
 }
+
+
+add_action('admin_head', 'Vincent_Sureau_Portfolio_remove_content_editor');
+/**
+ * Remove the content editor from front page as all the content is handled by ACF
+ */
+function Vincent_Sureau_Portfolio_remove_content_editor()
+{
+    if((int) get_option('page_on_front') == get_the_ID())
+    {
+        remove_post_type_support('page', 'editor');
+    }
+}
