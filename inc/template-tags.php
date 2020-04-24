@@ -23,12 +23,12 @@ function Vincent_Sureau_Portfolio_posted_on() {
 	);
 
 	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'vincent-sureau-portfolio' ),
+		esc_html_x( 'Publié le %s', 'post date', 'vincent-sureau-portfolio' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
 	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'vincent-sureau-portfolio' ),
+		esc_html_x( 'par %s', 'post author', 'vincent-sureau-portfolio' ),
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 

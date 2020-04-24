@@ -19,7 +19,8 @@ Tags: portofolio, bootstrap
 # Forms
 # Navigation
 	## Links
-	## Menus
+  ## Menus
+# Pagination
 # Accessibility
 # Alignments
 # Clearings
@@ -377,6 +378,46 @@ a.page-scroller {
     margin: 0 auto;
   }
 }
+
+/*--------------------------------------------------------------
+# Pagination
+--------------------------------------------------------------*/
+
+.pagination {
+  justify-content: center;
+}
+
+.pagination .nav-links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0px;
+}
+
+.pagination .page-numbers {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    position: relative;
+    display: block;
+    line-height: 1.25;
+    color: #fff;
+    background-color: #4E5D6C;
+    border: 1px solid transparent;
+}
+
+.pagination .page-numbers:hover,
+.pagination .page-numbers:focus {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+
+.pagination .page-numbers.current {
+  background-color: #DF691A;
+  border-color: #DF691A;
+}
 /*--------------------------------------------------------------
 ## Links
 --------------------------------------------------------------*/
@@ -558,12 +599,11 @@ body:not(.theme-preset-active) #masthead .navbar-nav > li.current_page_item > a 
 
 .navigation.post-navigation {
   padding-top: 1.875rem;
+  border-top: 2px solid #808b96;
 }
 
 .post-navigation .nav-previous a,
 .post-navigation .nav-next a {
-  border: 1px solid #ddd;
-  border-radius: 0.938rem;
   display: inline-block;
   padding: 0.313rem 0.875rem;
   text-decoration: none;

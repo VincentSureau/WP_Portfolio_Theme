@@ -84,33 +84,35 @@ if ( post_password_required() ) {
     // If comments are closed and there are comments, let's leave a little note, shall we?
     if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
 
-        <p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'vincent-sureau-portfolio' ); ?></p>
+        <p class="no-comments"><?php esc_html_e( 'Les commentaires sont fermés.', 'vincent-sureau-portfolio' ); ?></p>
         <?php
     endif; ?>
 
-    <?php comment_form( $args = array(
-        'id_form'           => 'commentform',  // that's the wordpress default value! delete it or edit it ;)
-        'id_submit'         => 'commentsubmit',
-        'title_reply'       => __( 'Leave a Reply', 'vincent-sureau-portfolio' ),  // that's the wordpress default value! delete it or edit it ;)
-		/* translators: 1: Reply Specific User */
-        'title_reply_to'    => __( 'Leave a Reply to %s', 'vincent-sureau-portfolio' ),  // that's the wordpress default value! delete it or edit it ;)
-        'cancel_reply_link' => __( 'Cancel Reply', 'vincent-sureau-portfolio' ),  // that's the wordpress default value! delete it or edit it ;)
-        'label_submit'      => __( 'Post Comment', 'vincent-sureau-portfolio' ),  // that's the wordpress default value! delete it or edit it ;)
+    <div class="bg-duck-blue p-4">
+        <?php comment_form( $args = array(
+            'id_form'           => 'commentform',  // that's the wordpress default value! delete it or edit it ;)
+            'id_submit'         => 'commentsubmit',
+            'title_reply'       => __( 'Laisser un commentaire', 'vincent-sureau-portfolio' ),  // that's the wordpress default value! delete it or edit it ;)
+            /* translators: 1: Reply Specific User */
+            'title_reply_to'    => __( 'Répondre à %s', 'vincent-sureau-portfolio' ),  // that's the wordpress default value! delete it or edit it ;)
+            'cancel_reply_link' => __( 'Annuler', 'vincent-sureau-portfolio' ),  // that's the wordpress default value! delete it or edit it ;)
+            'label_submit'      => __( 'Poster', 'vincent-sureau-portfolio' ),  // that's the wordpress default value! delete it or edit it ;)
 
-        'comment_field' =>  '<p><textarea placeholder="Start typing..." id="comment" class="form-control" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',
+            'comment_field' =>  '<p><textarea placeholder="Commencer à écrire..." id="comment" class="form-control" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',
 
-        'comment_notes_after' => '<p class="form-allowed-tags">' .
-            __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:', 'vincent-sureau-portfolio' ) .
-            '</p><div class="alert alert-info">' . allowed_tags() . '</div>'
+            'comment_notes_after' => '<p class="form-allowed-tags">' .
+                __( 'Vous pouvez utiliser ces <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:', 'vincent-sureau-portfolio' ) .
+                '</p><div class="alert alert-light">' . allowed_tags() . '</div>'
 
-        // So, that was the needed stuff to have bootstrap basic styles for the form elements and buttons
+            // So, that was the needed stuff to have bootstrap basic styles for the form elements and buttons
 
-        // Basically you can edit everything here!
-        // Checkout the docs for more: http://codex.wordpress.org/Function_Reference/comment_form
-        // Another note: some classes are added in the bootstrap-wp.js - ckeck from line 1
+            // Basically you can edit everything here!
+            // Checkout the docs for more: http://codex.wordpress.org/Function_Reference/comment_form
+            // Another note: some classes are added in the bootstrap-wp.js - ckeck from line 1
 
-    ));
+        ));
 
-	?>
+        ?>
+    </div>
 
 </div><!-- #comments -->

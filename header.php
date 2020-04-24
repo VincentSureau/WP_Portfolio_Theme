@@ -83,5 +83,4 @@
         </div>
     <?php endif; ?>
 	<div id="content" class="site-content">
-		<div class="<?= is_front_page() ? "" : "container" ?>">
-                <?php endif; ?>
+    <?php endif; ?>
