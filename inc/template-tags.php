@@ -149,7 +149,7 @@ if ( ! function_exists( 'Vincent_Sureau_Portfolio_comment' ) ) :
                     <div class="media-body-wrap card">
 
                         <div class="card-header">
-                            <h5 class="mt-0"><?php printf( __( '%s <span class="says">says:</span>', 'vincent-sureau-portfolio' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?></h5>
+                            <h5 class="mt-0"><?php printf( __( '%s <span class="says">dit :</span>', 'vincent-sureau-portfolio' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?></h5>
                             <div class="comment-meta">
                                 <a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
                                     <time datetime="<?php comment_time( 'c' ); ?>">

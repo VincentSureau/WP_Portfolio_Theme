@@ -32,13 +32,13 @@ if ( post_password_required() ) {
             if ( '1' === $comments_number ) {
                 printf(
 					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'vincent-sureau-portfolio' ),
+					esc_html__( 'Un commentaire sur &ldquo;%1$s&rdquo;', 'vincent-sureau-portfolio' ),
 					'<span>' . esc_html(get_the_title()) . '</span>'
 				);
             } else {
                 printf( // WPCS: XSS OK.
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $underscore_comment_count, 'comments title', 'vincent-sureau-portfolio' ) ),
+					esc_html( _nx( '%1$s commentaires sur &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $underscore_comment_count, 'comments title', 'vincent-sureau-portfolio' ) ),
 					esc_html( number_format_i18n( $underscore_comment_count ) ),
 					'<span>' . esc_html( get_the_title() ) . '</span>'
 				);
