@@ -37,7 +37,7 @@ function Vincent_Sureau_Portfolio_posted_on() {
     if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
         echo ' | <span class="comments-link"><i class="fa fa-comments" aria-hidden="true"></i> ';
         /* translators: %s: post title */
-        comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'vincent-sureau-portfolio' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
+        comments_popup_link( sprintf( wp_kses( __( 'Commenter<span class="screen-reader-text"> on %s</span>', 'vincent-sureau-portfolio' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
         echo '</span>';
     }
 
